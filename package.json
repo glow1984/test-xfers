@@ -8,5 +8,8 @@
 	"start": "node signup_login.js"
   },
   "author": "gary low",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.14.0"
+  },
 }
