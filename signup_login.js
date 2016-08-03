@@ -59,6 +59,6 @@ app.post('/signup_login', function(requ, resp) {
 	resp.json(true);*/
 });
 
-app.listen(3001, function () {
+app.listen(process.env.PORT || 5000, function () {
   console.log('Example app listening on port 3001!');
 });
