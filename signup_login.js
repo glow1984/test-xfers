@@ -12,8 +12,7 @@ app.use(bodyParser.json());
 
 app.post('/signup_login', function(requ, resp) {
 	
-	var crypto = require('crypto')
-	, shasum = crypto.createHash('sha1');
+	var crypto = require('crypto')	, shasum = crypto.createHash('sha1');
 		shasum.update(requ.body.phone_no+'xTSD2-XZVBo3iv-GsZEEaYM6E122GYbKsHs3vnKwxcY');
 	hash =shasum.digest('hex')
 	
