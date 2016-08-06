@@ -263,7 +263,7 @@ app.get('/user', function (requ, resp) {
 	  path: 'https://sandbox.xfers.io/api/v3/user',
 	  method: 'GET',
 	  headers: {
-		'X-XFERS-USER-API-KEY': requ.headers.X-XFERS-USER-API-KEY
+		'X-XFERS-USER-API-KEY': req.get('X-XFERS-USER-API-KEY')
 	  }
 	};
 	
@@ -381,7 +381,7 @@ app.post('/bank_account', function(requ, resp) {
 	  path: '/api/v3/user/bank_account',
 	  method: 'POST',
 	  headers: {
-		'X-XFERS-USER-API-KEY': requ.headers.X-XFERS-USER-API-KEY,
+		'X-XFERS-USER-API-KEY': req.get('X-XFERS-USER-API-KEY'),
 		'Content-Type': 'application/json'
 	  }
 	};
