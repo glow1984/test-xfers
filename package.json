@@ -1,23 +1,18 @@
 {
-  "name": "signup_login",
+  "name": "xfers-sandbox",
   "version": "1.0.0",
-  "description": "this is the call to check if a user has an xfers account.",
-  "main": "signup_login.js",
+  "description": "",
+  "main": "xfers_sandbox.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node signup_login.js"
+	"start": "node xfers_sandbox.js"
   },
-  "author": "gary low",
-  "license": "ISC",
-  "dependencies": {
-    "express": "4.14.0",
-	"body-parser": "1.15.2"
-  },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/glow1984/test-xfers.git"
   },
+  "author": "gary",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/glow1984/test-xfers/issues"
   },
