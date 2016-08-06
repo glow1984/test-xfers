@@ -263,7 +263,7 @@ app.get('/user', function (requ, resp) {
 	  path: 'https://sandbox.xfers.io/api/v3/user',
 	  method: 'GET',
 	  headers: {
-		'X-XFERS-USER-API-KEY': 'CxYvxPKs1LDyAGAJbaBdnonv47psgVYdZAFFeJ1ux9c'
+		'X-XFERS-USER-API-KEY': requ.headers.X-XFERS-USER-API-KEY
 	  }
 	};
 	
@@ -369,6 +369,50 @@ app.post('/payment_notification', function(requ, resp) {
 		resp.json(true);*/
 
 	////////////////////////////////////////////////////
+});
+
+
+//8. Bank account
+app.post('/bank_account', function(requ, resp) {
+
+	var options = {
+	  host: 'sandbox.xfers.io',
+	  port: '443',
+	  path: '/api/v3/user/bank_account',
+	  method: 'POST',
+	  headers: {
+		'X-XFERS-USER-API-KEY': requ.headers.X-XFERS-USER-API-KEY,
+		'Content-Type': 'application/json'
+	  }
+	};
+
+	var data = JSON.stringify({
+		'account_no': requ.body.account_no,
+		'bank': requ.body.bank
+	});
+
+	var req = https.request(options, function(res) {
+	  var msg = '';
+
+	  res.setEncoding('utf8');
+	  res.on('data', function(chunk) {
+		msg += chunk;
+	  });
+	  res.on('end', function() {
+		console.log(JSON.parse(msg));
+		resp.send(JSON.parse(msg));
+	  });
+	});
+
+	req.write(data);
+	req.end();
+	
+	/*var newQuote = {
+		phone_no : requ.body.phoneNo,
+		signature : requ.body.signature
+	}; 
+	data.push(newQuote);
+	resp.json(true);*/
 });
 
 app.listen(process.env.PORT || 3000, function () {
