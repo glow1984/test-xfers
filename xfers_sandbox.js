@@ -24,7 +24,7 @@ app.post('/signup_login', function(requ, resp) {
 	  path: '/api/v3/authorize/signup_login',
 	  method: 'POST',
 	  headers: {
-		'X-XFERS-APP-API-KEY': 'NeZGR-z2pu1ksERU4taVV2nyKCy89jgJAqxGM2Dm6Nw',
+		'X-XFERS-APP-API-KEY': requ.get('X-XFERS-APP-API-KEY'),
 		'Content-Type': 'application/json'
 	  }
 	};
@@ -76,7 +76,7 @@ app.get('/get_token', function (requ, resp) {
 	  path: '/api/v3/authorize/get_token?otp='+requ.query.otp+'&phone_no=%2B'+requ.query.phone_no+'&signature='+hash,
 	  method: 'GET',
 	  headers: {
-		'X-XFERS-APP-API-KEY': 'NeZGR-z2pu1ksERU4taVV2nyKCy89jgJAqxGM2Dm6Nw'
+		'X-XFERS-APP-API-KEY': requ.get('X-XFERS-APP-API-KEY')
 	  }
 	};
   
@@ -118,7 +118,7 @@ app.post('/charges', function(requ, resp) {
 	  path: '/api/v3/charges',
 	  method: 'POST',
 	  headers: {
-		'X-XFERS-USER-API-KEY': 'insTP7SnyMttf--BzaMi91zeRQqJ7qHzxL9A_XvLQFw',
+		'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
 		'Content-Type': 'application/json'
 	  }
 	};
@@ -171,7 +171,7 @@ app.get('/retrieve_charge', function (requ, resp) {
 	  path: 'https://sandbox.xfers.io/api/v3/charges/'+requ.query.charge_id,
 	  method: 'GET',
 	  headers: {
-		'X-XFERS-USER-API-KEY': 'insTP7SnyMttf--BzaMi91zeRQqJ7qHzxL9A_XvLQFw'
+		'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY')
 	  }
 	};
   
@@ -213,7 +213,7 @@ app.post('/payouts', function(requ, resp) {
 	  path: '/api/v3/payouts',
 	  method: 'POST',
 	  headers: {
-		'X-XFERS-USER-API-KEY': 'insTP7SnyMttf--BzaMi91zeRQqJ7qHzxL9A_XvLQFw',
+		'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
 		'Content-Type': 'application/json'
 	  }
 	};
@@ -331,7 +331,7 @@ app.post('/payment_notification', function(requ, resp) {
 		  path: '/api/v3/'+data.order_id+'/validate',
 		  method: 'POST',
 		  headers: {
-			'X-XFERS-USER-API-KEY': 'insTP7SnyMttf--BzaMi91zeRQqJ7qHzxL9A_XvLQFw',
+			'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY')
 			'Content-Type': 'application/json'
 		  }
 		};
