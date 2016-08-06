@@ -331,7 +331,7 @@ app.post('/payment_notification', function(requ, resp) {
 		  path: '/api/v3/'+data.order_id+'/validate',
 		  method: 'POST',
 		  headers: {
-			'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY')
+			'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
 			'Content-Type': 'application/json'
 		  }
 		};
