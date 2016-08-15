@@ -318,6 +318,8 @@ app.post('/payment_notification', function(requ, resp) {
 	  res.setEncoding('utf8');
 	  res.sendStatus(200);
 	});
+	
+	console.log("I heard from Xfers about payment cleared!");
 
 	req.write();
 	req.end();
