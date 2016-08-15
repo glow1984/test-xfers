@@ -134,7 +134,8 @@ app.post('/charges', function(requ, resp) {
 		'user_api_token': requ.body.user_api_token,
 		'user_phone_no': requ.body.user_phone_no,
 		'redirect': 'false',
-		'receipt_email': requ.body.receipt_email
+		'receipt_email': requ.body.receipt_email,
+		'card_only' : 'true'
 	});
 
 	var req = https.request(options, function(res) {
@@ -418,5 +419,5 @@ app.post('/bank_account', function(requ, resp) {
 });
 
 app.listen(process.env.PORT || 3000, function () {
-  console.log('Example app listening on port 3001!');
+  console.log('Example app listening on port 3000!');
 });
