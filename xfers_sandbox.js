@@ -329,12 +329,12 @@ app.post('/payment_notification', function(requ, resp) {
 	
 	//Call Xfers server now to do the verification
 	/////////////////////////////////////////////////////////////
-	app.post('/payment_notification', function(req1, res1) {
+	app.post(requ.body.order_id+'/validate', function(req1, res1) {
 		
 		var options = {
 		  host: 'sandbox.xfers.io',
 		  port: '443',
-		  path: '/api/v3/'+data.order_id+'/validate',
+		  path: '/api/v3/'+requ.body.order_id+'/validate',
 		  method: 'POST',
 		  headers: {
 			'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
