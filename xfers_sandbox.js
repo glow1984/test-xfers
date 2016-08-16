@@ -319,6 +319,7 @@ app.post('/payment_notification', function(requ, resp) {
 
 	  res.setEncoding('utf8');
 	  res.sendStatus(200);
+	  console.log("200 sent!");
 	});
 	
 	console.log("I heard from Xfers about payment cleared!");
@@ -328,6 +329,7 @@ app.post('/payment_notification', function(requ, resp) {
 	
 	//Call Xfers server now to do the verification
 	/////////////////////////////////////////////////////////////
+	app.post('/payment_notification', function(req1, res1) {
 		
 		var options = {
 		  host: 'sandbox.xfers.io',
@@ -373,6 +375,7 @@ app.post('/payment_notification', function(requ, resp) {
 		resp.json(true);*/
 
 	////////////////////////////////////////////////////
+	});
 });
 
 
