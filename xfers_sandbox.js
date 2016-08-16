@@ -324,7 +324,7 @@ app.post('/payment_notification', function(requ, resp) {
 	
 	console.log("I heard from Xfers about payment cleared!");
 
-	req.write();
+	req.write("");
 	req.end();
 	
 	//Call Xfers server now to do the verification
