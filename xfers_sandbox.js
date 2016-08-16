@@ -135,7 +135,7 @@ app.post('/charges', function(requ, resp) {
 		'user_phone_no': requ.body.user_phone_no,
 		'redirect': 'false',
 		'receipt_email': requ.body.receipt_email,
-		'card_only' : 'true',
+		'card_only' : requ.body.card_only,
 		'notify_url' : 'https://test-xfers.herokuapp.com/payment_notification/'
 	});
 
