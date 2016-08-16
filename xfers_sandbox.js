@@ -330,6 +330,7 @@ app.post('/payment_notification', function(requ, resp) {
 	//Call Xfers server now to do the verification
 	/////////////////////////////////////////////////////////////
 	app.post(requ.body.order_id+'/validate', function(req1, res1) {
+		console.log("Second stage...");
 		
 		var options = {
 		  host: 'sandbox.xfers.io',
