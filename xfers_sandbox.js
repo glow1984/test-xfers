@@ -305,7 +305,7 @@ app.post('/payment_notification', function(requ, resp) {
 		'meta_data': requ.body.meta_data
 	});
 	
-	console.log("Order ID: "+data);
+	console.log("request: %j",requ);
 	resp.sendStatus(200);
 	
 	var options = {
@@ -314,8 +314,8 @@ app.post('/payment_notification', function(requ, resp) {
 		  path: '/api/v3/charges/'+requ.body.txn_id+'/validate',
 		  method: 'POST',
 		  headers: {
-			'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
-			//'X-XFERS-USER-API-KEY' : 'tC1-AFWGMy_i3fbsHsoq6ADBobZ8jwtQD9FBuVK_byg',
+			//'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
+			'X-XFERS-USER-API-KEY' : 'MV72_B6q6zbhMA-Ejams8t6QWY4quwzsgcwZa2LAzZx',
 			'Content-Type': 'application/json'
 		  }
 		};
