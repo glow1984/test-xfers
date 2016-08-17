@@ -315,7 +315,7 @@ app.post('/payment_notification', function(requ, resp) {
 		'meta_data': requ.body.meta_data
 	});
 
-	var req = https.request(options, function(res) {
+	/*var req = https.request(options, function(res) {
 	  var msg = '';
 
 	  res.setEncoding('utf8');
@@ -324,9 +324,13 @@ app.post('/payment_notification', function(requ, resp) {
 		res.sendStatus(200);
 		});
 	});
+	
+	response.writeHead(200, {'Content-Type': 'application/json'});
 
-	//req.write("");
-	req.end();
+	req.write("");
+	req.end();*/
+	
+	resp.sendStatus(200);
 	
 	console.log("Order ID: "+requ.body.order_id);
 	
