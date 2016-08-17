@@ -336,7 +336,6 @@ app.post('/payment_notification', function(requ, resp) {
 	
 	//Call Xfers server now to do the verification
 	/////////////////////////////////////////////////////////////
-	app.post('/'+requ.body.order_id+'/validate', function(req1, res1) {
 		console.log("Second stage...");
 		
 		var options1 = {
@@ -366,11 +365,11 @@ app.post('/payment_notification', function(requ, resp) {
 			});
 			res1.on('end', function() {
 				console.log(JSON.parse(msg));
-				resp1.send(JSON.parse(msg));
+				//resp1.send(JSON.parse(msg));
 			});
 		});
 
-		req2.write(data1);
+		req2.write(requ.body);
 		req2.end();
 		
 		
@@ -383,7 +382,6 @@ app.post('/payment_notification', function(requ, resp) {
 		resp.json(true);*/
 
 	////////////////////////////////////////////////////
-	});
 });
 
 
