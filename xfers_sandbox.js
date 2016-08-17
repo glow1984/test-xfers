@@ -321,7 +321,7 @@ app.post('/payment_notification', function(requ, resp) {
 	  res.setEncoding('utf8');
 	  res.on('end', function() {
 		console.log("200 sent!");
-		resp.sendStatus(200);
+		res.sendStatus(200);
 		});
 	});
 
