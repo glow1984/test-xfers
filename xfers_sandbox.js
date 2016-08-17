@@ -311,7 +311,7 @@ app.post('/payment_notification', function(requ, resp) {
 	var options = {
 		  host: 'sandbox.xfers.io',
 		  port: '443',
-		  path: '/api/v3/'+requ.body.txn_id+'/validate',
+		  path: '/api/v3/charges/'+requ.body.txn_id+'/validate',
 		  method: 'POST',
 		  headers: {
 			//'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
