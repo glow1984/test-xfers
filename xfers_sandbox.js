@@ -295,8 +295,17 @@ req.end();
 
 //7. Payment notification
 app.post('/payment_notification', function(requ, resp) {
-
-	console.log("Order ID: "+requ.body);
+	
+	var data = JSON.stringify({
+		'txn_id': requ.body.txn_id,
+		'order_id': requ.body.order_id,
+		'total_amount': requ.body.total_amount,
+		'currency': requ.body.currency,
+		'status': requ.body.status,
+		'meta_data': requ.body.meta_data
+	});
+	
+	console.log("Order ID: "+data);
 	resp.sendStatus(200);
 	
 	var options = {
@@ -311,6 +320,8 @@ app.post('/payment_notification', function(requ, resp) {
 		  }
 		};
 		
+		
+		
 	var req = https.request(options, function(res) {
 	  var msg = '';
 
@@ -324,7 +335,7 @@ app.post('/payment_notification', function(requ, resp) {
 	  });
 	});
 
-	req.write(requ.body);
+	req.write(data);
 	req.end();
 		
 		
