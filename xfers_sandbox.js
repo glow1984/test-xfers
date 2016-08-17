@@ -296,7 +296,7 @@ req.end();
 //7. Payment notification
 app.post('/payment_notification', function(requ, resp) {
 
-	console.log("Order ID: "+requ.body.order_id);
+	console.log("Order ID: "+requ.body);
 	resp.sendStatus(200);
 	
 	var options = {
