@@ -321,12 +321,12 @@ app.post('/payment_notification', function(requ, resp) {
 	  res.setEncoding('utf8');
 	  res.on('end', function() {
 		console.log("200 sent!");
-		resp.sendStatus(200);
+		req.end();
 		});
 	});
 
-	req.write("");
-	req.end();
+	//req.write("");
+	//req.end();
 	
 	console.log("Order ID: "+requ.body.order_id);
 	
