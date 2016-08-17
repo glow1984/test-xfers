@@ -296,7 +296,39 @@ req.end();
 //7. Payment notification
 app.post('/payment_notification', function(requ, resp) {
 
+	console.log("Order ID: "+requ.body.order_id);
+	resp.sendStatus(200);
+	
 	var options = {
+		  host: 'sandbox.xfers.io',
+		  port: '443',
+		  path: '/api/v3/'+requ.body.txn_id+'/validate',
+		  method: 'POST',
+		  headers: {
+			//'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
+			'X-XFERS-USER-API-KEY' : 'tC1-AFWGMy_i3fbsHsoq6ADBobZ8jwtQD9FBuVK_byg',
+			'Content-Type': 'application/json'
+		  }
+		};
+		
+	var req = https.request(options, function(res) {
+	  var msg = '';
+
+	  res.setEncoding('utf8');
+	  res.on('data', function(chunk) {
+		msg += chunk;
+	  });
+	  res.on('end', function() {
+		console.log(JSON.parse(msg));
+		resp.send(JSON.parse(msg));
+	  });
+	});
+
+	req.write(requ.body);
+	req.end();
+		
+		
+	/*var options = {
 	  host: 'sandbox.xfers.io',
 	  port: '443',
 	  path: '/api/v3/payment_notification',
@@ -313,7 +345,7 @@ app.post('/payment_notification', function(requ, resp) {
 		'currency': requ.body.currency,
 		'status': requ.body.status,
 		'meta_data': requ.body.meta_data
-	});
+	});*/
 
 	/*var req = https.request(options, function(res) {
 	  var msg = '';
@@ -330,15 +362,15 @@ app.post('/payment_notification', function(requ, resp) {
 	req.write("");
 	req.end();*/
 	
-	resp.sendStatus(200);
 	
-	console.log("Order ID: "+requ.body.order_id);
+	
+	
 	
 	//Call Xfers server now to do the verification
 	/////////////////////////////////////////////////////////////
-		console.log("Second stage...");
+		//console.log("Second stage...");
 		
-		var options1 = {
+		/*var options1 = {
 		  host: 'sandbox.xfers.io',
 		  port: '443',
 		  path: '/api/v3/'+requ.body.order_id+'/validate',
@@ -348,6 +380,7 @@ app.post('/payment_notification', function(requ, resp) {
 			'X-XFERS-USER-API-KEY' : 'tC1-AFWGMy_i3fbsHsoq6ADBobZ8jwtQD9FBuVK_byg',
 			'Content-Type': 'application/json'
 		  }
+		  json: requ.body;
 		};
 
 		var data1 = JSON.stringify({
@@ -371,7 +404,7 @@ app.post('/payment_notification', function(requ, resp) {
 		});
 
 		req2.write(requ.body);
-		req2.end();
+		req2.end();*/
 		
 		
 		
