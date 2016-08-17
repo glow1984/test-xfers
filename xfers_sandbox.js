@@ -331,7 +331,7 @@ app.post('/payment_notification', function(requ, resp) {
 	  });
 	  res.on('end', function() {
 		console.log(JSON.parse(msg));
-		resp.send(JSON.parse(msg));
+		res.send(JSON.parse(msg));
 	  });
 	});
 
