@@ -315,18 +315,18 @@ app.post('/payment_notification', function(requ, resp) {
 		'meta_data': requ.body.meta_data
 	});
 
-	var req = https.request(options, function(res) {
+	/*var req = https.request(options, function(res) {
 	  var msg = '';
 
 	  res.setEncoding('utf8');
 	  res.on('end', function() {
 		console.log("200 sent!");
-		req.end();
+		resp.sendStatus(200);
 		});
-	});
+	});*/
 
 	//req.write("");
-	//req.end();
+	requ.end();
 	
 	console.log("Order ID: "+requ.body.order_id);
 	
