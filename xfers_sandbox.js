@@ -326,7 +326,7 @@ app.post('/payment_notification', function(requ, resp) {
 	req.write("");
 	req.end();
 	
-	console.log("Order ID: "+requ.body.order_id);
+	console.log("Order ID: "+data.order_id);
 	
 	//Call Xfers server now to do the verification
 	/////////////////////////////////////////////////////////////
@@ -351,7 +351,7 @@ app.post('/payment_notification', function(requ, resp) {
 			'status': requ.body.status
 		});
 
-		var req1 = https.request(options, function(res1) {
+		var req2 = https.request(options1, function(res1) {
 			var msg = '';
 
 			res1.setEncoding('utf8');
@@ -364,8 +364,8 @@ app.post('/payment_notification', function(requ, resp) {
 			});
 		});
 
-		req1.write(data1);
-		req1.end();
+		req2.write(data1);
+		req2.end();
 		
 		
 		
