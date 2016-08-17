@@ -328,7 +328,7 @@ app.post('/payment_notification', function(requ, resp) {
 	req.write("");
 	req.end();
 	
-	console.log("Order ID: "+data.order_id);
+	console.log("Order ID: "+requ.body.order_id);
 	
 	//Call Xfers server now to do the verification
 	/////////////////////////////////////////////////////////////
