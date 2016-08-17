@@ -294,7 +294,7 @@ req.end();
 
 
 //7. Payment notification
-app.post('/payment_notification', function(req, res) {
+app.post('/payment_notification', function(requ, resp) {
 
 	var options = {
 	  host: 'sandbox.xfers.io',
@@ -307,15 +307,15 @@ app.post('/payment_notification', function(req, res) {
 	};
 
 	var data = JSON.stringify({
-		'txn_id': req.body.txn_id,
-		'order_id': req.body.order_id,
-		'total_amount': req.body.total_amount,
-		'currency': req.body.currency,
-		'status': req.body.status,
-		'meta_data': req.body.meta_data
+		'txn_id': requ.body.txn_id,
+		'order_id': requ.body.order_id,
+		'total_amount': requ.body.total_amount,
+		'currency': requ.body.currency,
+		'status': requ.body.status,
+		'meta_data': requ.body.meta_data
 	});
 
-	/*var req = https.request(options, function(res) {
+	var req = https.request(options, function(res) {
 	  var msg = '';
 
 	  res.setEncoding('utf8');
@@ -323,34 +323,34 @@ app.post('/payment_notification', function(req, res) {
 		console.log("200 sent!");
 		resp.sendStatus(200);
 		});
-	});*/
+	});
 
 	//req.write("");
 	req.end();
 	
-	console.log("Order ID: "+req.body.order_id);
+	console.log("Order ID: "+requ.body.order_id);
 	
 	//Call Xfers server now to do the verification
 	/////////////////////////////////////////////////////////////
-	app.post('/'+req.body.order_id+'/validate', function(req1, res1) {
+	app.post('/'+requ.body.order_id+'/validate', function(req1, res1) {
 		console.log("Second stage...");
 		
 		var options1 = {
 		  host: 'sandbox.xfers.io',
 		  port: '443',
-		  path: '/api/v3/'+req.body.order_id+'/validate',
+		  path: '/api/v3/'+requ.body.order_id+'/validate',
 		  method: 'POST',
 		  headers: {
-			'X-XFERS-USER-API-KEY': req.get('X-XFERS-USER-API-KEY'),
+			'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
 			'Content-Type': 'application/json'
 		  }
 		};
 
 		var data1 = JSON.stringify({
-			'order_id': req.body.order_id,
-			'total_amount': req.body.total_amount,
-			'currency': req.body.currency,
-			'status': req.body.status
+			'order_id': requ.body.order_id,
+			'total_amount': requ.body.total_amount,
+			'currency': requ.body.currency,
+			'status': requ.body.status
 		});
 
 		var req2 = https.request(options1, function(res1) {
