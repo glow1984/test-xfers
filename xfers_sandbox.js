@@ -136,6 +136,7 @@ app.post('/charges', function(requ, resp) {
 		'redirect': 'false',
 		'receipt_email': requ.body.receipt_email,
 		'card_only' : requ.body.card_only,
+		'skip_notifications' : requ.body.skip_notifications,
 		'notify_url' : 'https://test-xfers.herokuapp.com/payment_notification/'
 	});
 
@@ -318,21 +319,21 @@ app.post('/payment_notification', function(requ, resp) {
 	  var msg = '';
 
 	  res.setEncoding('utf8');
-	  //res.sendStatus(200);
+	  res.sendStatus(200);
 	  console.log("200 sent!");
 	});
-	
-	console.log("I heard from Xfers about payment cleared!");
 
 	req.write("");
 	req.end();
+	
+	console.log("Order ID: "+requ.body.order_id);
 	
 	//Call Xfers server now to do the verification
 	/////////////////////////////////////////////////////////////
 	app.post('/'+requ.body.order_id+'/validate', function(req1, res1) {
 		console.log("Second stage...");
 		
-		var options = {
+		var options1 = {
 		  host: 'sandbox.xfers.io',
 		  port: '443',
 		  path: '/api/v3/'+requ.body.order_id+'/validate',
