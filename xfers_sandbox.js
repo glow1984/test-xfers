@@ -338,7 +338,7 @@ app.post('/payment_notification', function(requ, resp) {
 	req.write(data);
 	req.end();*/
 	
-	const request = require('request-promise')  
+	const request = require('request')  
 	
 	const options = {
 		method: 'POST',
