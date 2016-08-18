@@ -314,8 +314,8 @@ app.post('/payment_notification', function(requ, resp) {
 		  path: '/api/v3/charges/'+requ.body.txn_id+'/validate',
 		  method: 'POST',
 		  headers: {
-			'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
-			//'X-XFERS-USER-API-KEY' : 'MV72_B6q6zbhMA-Ejams8t6QWY4quwzsgcwZa2LAzZx',
+			//'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
+			'X-XFERS-USER-API-KEY' : '8zVyJEW4us57x76zhNZrgJzt_GJKyzzvTcAZh1quqyc',
 			'Content-Type': 'application/json'
 		  }
 		};
