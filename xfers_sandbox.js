@@ -305,8 +305,8 @@ app.post('/payment_notification', function(requ, resp) {
 		'meta_data': requ.body.meta_data
 	});
 	
-	console.log("request: %j",requ);
-	//resp.sendStatus(200);
+	console.log("request: ",data);
+	resp.sendStatus(200);
 	
 	var options = {
 		  host: 'sandbox.xfers.io',
@@ -320,7 +320,7 @@ app.post('/payment_notification', function(requ, resp) {
 		  }
 		};
 		
-	resp.sendStatus(200);
+	//resp.sendStatus(200);
 		
 	var req = https.request(options, function(res) {
 	  var msg = '';
