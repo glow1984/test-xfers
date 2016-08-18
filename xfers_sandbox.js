@@ -306,7 +306,7 @@ app.post('/payment_notification', function(requ, resp) {
 	});
 	
 	console.log("request: ",data);
-	return resp.sendStatus(200);
+	resp.sendStatus(200);
 	
 	var options = {
 		  host: 'sandbox.xfers.io',
@@ -331,7 +331,7 @@ app.post('/payment_notification', function(requ, resp) {
 	  });
 	  res.on('end', function() {
 		console.log(JSON.parse(msg));
-		resp.send(JSON.parse(msg));
+		return resp.send(JSON.parse(msg));
 	  });
 	});
 
