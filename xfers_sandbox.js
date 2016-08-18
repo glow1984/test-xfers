@@ -340,7 +340,7 @@ app.post('/payment_notification', function(requ, resp) {
 	
 	var request1 = require('request-promise')  
 	
-	var options = {
+	var options1 = {
 		method: 'POST',
 		uri: 'https://sandbox.xfers.io/api/v3/charges/'+requ.body.txn_id+'/validate',
 		header: {'X-XFERS-USER-API-KEY' : '8zVyJEW4us57x76zhNZrgJzt_GJKyzzvTcAZh1quqyc',
@@ -355,7 +355,7 @@ app.post('/payment_notification', function(requ, resp) {
 		}
 	}
 	​
-	request1(options)  
+	request1(options1)  
 	  .then(function (response) {
 		console.log(response);
 	  })
