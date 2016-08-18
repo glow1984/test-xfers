@@ -352,7 +352,8 @@ app.post('/payment_notification', function(requ, resp) {
 			'currency': requ.body.currency,
 			'status': requ.body.status,
 			'meta_data': requ.body.meta_data
-		}
+		},
+		json: true;
 	}
 	​
 	request1(options1)  
