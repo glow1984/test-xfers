@@ -320,7 +320,7 @@ app.post('/payment_notification', function(requ, resp) {
 		  }
 		};
 		
-		
+	resp.sendStatus(200);
 		
 	var req = https.request(options, function(res) {
 	  var msg = '';
@@ -337,96 +337,7 @@ app.post('/payment_notification', function(requ, resp) {
 
 	req.write(data);
 	req.end();
-		
-		
-	/*var options = {
-	  host: 'sandbox.xfers.io',
-	  port: '443',
-	  path: '/api/v3/payment_notification',
-	  method: 'POST',
-	  headers: {
-		'Content-Type': 'application/json'
-	  }
-	};
-
-	var data = JSON.stringify({
-		'txn_id': requ.body.txn_id,
-		'order_id': requ.body.order_id,
-		'total_amount': requ.body.total_amount,
-		'currency': requ.body.currency,
-		'status': requ.body.status,
-		'meta_data': requ.body.meta_data
-	});*/
-
-	/*var req = https.request(options, function(res) {
-	  var msg = '';
-
-	  res.setEncoding('utf8');
-	  res.on('end', function() {
-		console.log("200 sent!");
-		res.sendStatus(200);
-		});
-	});
 	
-	response.writeHead(200, {'Content-Type': 'application/json'});
-
-	req.write("");
-	req.end();*/
-	
-	
-	
-	
-	
-	//Call Xfers server now to do the verification
-	/////////////////////////////////////////////////////////////
-		//console.log("Second stage...");
-		
-		/*var options1 = {
-		  host: 'sandbox.xfers.io',
-		  port: '443',
-		  path: '/api/v3/'+requ.body.order_id+'/validate',
-		  method: 'POST',
-		  headers: {
-			//'X-XFERS-USER-API-KEY': requ.get('X-XFERS-USER-API-KEY'),
-			'X-XFERS-USER-API-KEY' : 'tC1-AFWGMy_i3fbsHsoq6ADBobZ8jwtQD9FBuVK_byg',
-			'Content-Type': 'application/json'
-		  }
-		  json: requ.body;
-		};
-
-		var data1 = JSON.stringify({
-			'order_id': requ.body.order_id,
-			'total_amount': requ.body.total_amount,
-			'currency': requ.body.currency,
-			'status': requ.body.status
-		});
-
-		var req2 = https.request(options1, function(res1) {
-			var msg = '';
-
-			res1.setEncoding('utf8');
-			res1.on('data', function(chunk) {
-				msg += chunk;
-			});
-			res1.on('end', function() {
-				console.log(JSON.parse(msg));
-				//resp1.send(JSON.parse(msg));
-			});
-		});
-
-		req2.write(requ.body);
-		req2.end();*/
-		
-		
-		
-		/*var newQuote = {
-			phone_no : requ.body.phoneNo,
-			signature : requ.body.signature
-		}; 
-		data.push(newQuote);
-		resp.json(true);*/
-
-	////////////////////////////////////////////////////
 });
 
 
