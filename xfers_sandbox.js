@@ -308,7 +308,7 @@ app.post('/payment_notification', function(requ, resp) {
 	console.log("request: ",data);
 	resp.sendStatus(200);
 	
-	/*var options = {
+	var options = {
 		  host: 'sandbox.xfers.io',
 		  port: '443',
 		  path: '/api/v3/charges/'+requ.body.txn_id+'/validate',
@@ -336,9 +336,9 @@ app.post('/payment_notification', function(requ, resp) {
 	});
 
 	req.write(data);
-	req.end();*/
+	req.end();
 	
-	var request1 = require('request-promise')  
+	/*var request1 = require('request-promise')  
 	
 	var options1 = {
 		method: 'POST',
@@ -362,7 +362,7 @@ app.post('/payment_notification', function(requ, resp) {
 	  })
 	  .catch(function (err) {
 		console.log(err);
-	  })
+	  })*/
 		
 });
 
