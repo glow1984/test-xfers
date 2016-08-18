@@ -338,6 +338,8 @@ app.post('/payment_notification', function(requ, resp) {
 	req.write(data);
 	req.end();*/
 	
+	const request = require('request-promise')  
+	
 	const options = {
 		method: 'POST',
 		uri: 'https://sandbox.xfers.io/api/v3/charges/'+requ.body.txn_id+'/validate',
