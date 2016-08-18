@@ -338,9 +338,11 @@ app.post('/payment_notification', function(requ, resp) {
 	req.write(data);
 	req.end();*/
 	
-	const options = {  
+	const options = {
 	  method: 'POST',
 	  uri: 'https://sandbox.xfers.io/api/v3/charges/'+requ.body.txn_id+'/validate',
+	  header: {'X-XFERS-USER-API-KEY' : '8zVyJEW4us57x76zhNZrgJzt_GJKyzzvTcAZh1quqyc',
+	'Content-Type': 'application/json'}
 	  body: data
 	}
 	​
@@ -352,7 +354,7 @@ app.post('/payment_notification', function(requ, resp) {
 		// Deal with the error
 	  })
 		
-	});
+});
 
 
 //8. Bank account
