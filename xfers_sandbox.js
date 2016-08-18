@@ -353,7 +353,7 @@ app.post('/payment_notification', function(requ, resp) {
 			'status': requ.body.status,
 			'meta_data': requ.body.meta_data
 		},
-		json: true;
+		json: true
 	}
 	​
 	request1(options1)  
