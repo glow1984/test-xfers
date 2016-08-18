@@ -308,7 +308,7 @@ app.post('/payment_notification', function(requ, resp) {
 	console.log("request: ",data);
 	resp.sendStatus(200);
 	
-	var options = {
+	/*var options = {
 		  host: 'sandbox.xfers.io',
 		  port: '443',
 		  path: '/api/v3/charges/'+requ.body.txn_id+'/validate',
@@ -331,14 +331,28 @@ app.post('/payment_notification', function(requ, resp) {
 	  });
 	  res.on('end', function() {
 		console.log(JSON.parse(msg));
-		return resp.send(JSON.parse(msg));
+		resp.send(JSON.parse(msg));
 	  });
 	});
 
 	req.write(data);
-	req.end();
+	req.end();*/
 	
-});
+	const options = {  
+	  method: 'POST',
+	  uri: 'https://sandbox.xfers.io/api/v3/charges/'+requ.body.txn_id+'/validate',
+	  body: data
+	}
+	​
+	request(options)  
+	  .then(function (response) {
+		// Handle the response
+	  })
+	  .catch(function (err) {
+		// Deal with the error
+	  })
+		
+	});
 
 
 //8. Bank account
