@@ -338,7 +338,7 @@ app.post('/payment_notification', function(requ, resp) {
 	req.write(data);
 	req.end();*/
 	
-	const request = require('request')  
+	const request1 = require('request-promise')  
 	
 	const options = {
 		method: 'POST',
@@ -355,7 +355,7 @@ app.post('/payment_notification', function(requ, resp) {
 		}
 	}
 	​
-	request(options)  
+	request1(options)  
 	  .then(function (response) {
 		console.log(response);
 	  })
