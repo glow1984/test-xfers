@@ -339,26 +339,26 @@ app.post('/payment_notification', function(requ, resp) {
 	req.end();*/
 	
 	const options = {
-	  method: 'POST',
-	  uri: 'https://sandbox.xfers.io/api/v3/charges/'+requ.body.txn_id+'/validate',
-	  header: {'X-XFERS-USER-API-KEY' : '8zVyJEW4us57x76zhNZrgJzt_GJKyzzvTcAZh1quqyc',
-		'Content-Type': 'application/json'},
-	  body: {
-		'txn_id': requ.body.txn_id,
-		'order_id': requ.body.order_id,
-		'total_amount': requ.body.total_amount,
-		'currency': requ.body.currency,
-		'status': requ.body.status,
-		'meta_data': requ.body.meta_data
+		method: 'POST',
+		uri: 'https://sandbox.xfers.io/api/v3/charges/'+requ.body.txn_id+'/validate',
+		header: {'X-XFERS-USER-API-KEY' : '8zVyJEW4us57x76zhNZrgJzt_GJKyzzvTcAZh1quqyc',
+			'Content-Type': 'application/json'},
+		body: {
+			'txn_id': requ.body.txn_id,
+			'order_id': requ.body.order_id,
+			'total_amount': requ.body.total_amount,
+			'currency': requ.body.currency,
+			'status': requ.body.status,
+			'meta_data': requ.body.meta_data
 		}
 	}
 	​
 	request(options)  
 	  .then(function (response) {
-		// Handle the response
+		console.log(response);
 	  })
 	  .catch(function (err) {
-		// Deal with the error
+		console.log(err);
 	  })
 		
 });
